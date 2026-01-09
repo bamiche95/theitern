@@ -8,11 +8,12 @@ export async function PATCH(
 ) {
   try {
     const { id } = await params;
-    const { is_approved } = await req.json();
+    const { content } = await req.json();
 
+    // Admin approves the review and optionally updates content
     await db.query(
-      "UPDATE reviews SET is_approved = ? WHERE id = ?",
-      [is_approved ? 1 : 0, id]
+      "UPDATE reviews SET is_approved = 1, content = ? WHERE id = ?",
+      [content, id]
     );
 
     return NextResponse.json({ success: true });

@@ -1,6 +1,6 @@
 import * as Icons from "lucide-react";
 import { getSiteFeatures } from "@/lib/settings";
-
+import { getSiteSettings } from "@/lib/settings";
 // Map your gradient keys to Tailwind classes
 const gradients: Record<string, string> = {
   blue: "from-blue-500 to-cyan-500",
@@ -14,16 +14,16 @@ const gradients: Record<string, string> = {
 export default async function WhyChooseUs() {
   const features = await getSiteFeatures();
   if (features.length === 0) return null;
-
+const settings = await getSiteSettings();
   return (
     <section className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-3">
-            The Learning Advantage
+          <h2 className="text-blue-600 font-bold tracking-wider  text-sm mb-3">
+            {settings.why_choose_us_tagline_title}
           </h2>
-          <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
-            Why thousands of students <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">trust our platform</span>
+          <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+           {settings.why_choose_us_title1}  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"><br></br>{settings.why_choose_us_title2}</span>
           </h3>
         </div>
 

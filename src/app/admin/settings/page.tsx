@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import dynamic from 'next/dynamic';
-import { Save, Globe, Mail, ShieldCheck, Share2, Loader2, CheckCircle } from "lucide-react";
+import { Save, Globe, Mail, ShieldCheck, Share2, Loader2, CheckCircle, SquarePlay } from "lucide-react";
 import ImageUpload from "@/app/components/ImageUpload";
 
 const InputField = ({ label, id, type = "text", value, onChange, onSave, isSaving }: any) => (
@@ -89,6 +89,9 @@ export default function SettingsPage() {
             { id: 'general', label: 'General Settings', icon: Globe },
             { id: 'social', label: 'Social Links', icon: Share2 },
             { id: 'legal', label: 'Policies & Content', icon: ShieldCheck },
+            { id: 'youtube', label: 'YouTube Embeds', icon: SquarePlay  },
+
+
           ].map(tab => (
             <button
               key={tab.id}
@@ -120,7 +123,7 @@ export default function SettingsPage() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <ImageUpload 
-                  label="Site Logo" 
+                  label="Site Logo. Recommended size: 150x50px (transparent background, rectangular and PNG format)" 
                   value={settings.logo_url} 
                   onChange={(url) => {
                     setSettings((prev: any) => ({ ...prev, logo_url: url }));
@@ -128,7 +131,7 @@ export default function SettingsPage() {
                   }} 
                 />
                 <ImageUpload 
-                  label="Site Icon (Favicon)" 
+                  label="Site Icon (Favicon). Ensure the icon is in .ico format (16x16 or 32x32 pixels)" 
                   value={settings.icon_url} 
                   onChange={(url) => {
                     setSettings((prev: any) => ({ ...prev, icon_url: url }));
@@ -136,7 +139,7 @@ export default function SettingsPage() {
                   }} 
                 />
                      <ImageUpload 
-                  label="Footer Logo" 
+                  label="Footer Logo. Recommended size: 150x50px (transparent background, rectangular and PNG format)" 
                   value={settings.footer_logo_url} 
                   onChange={(url) => {
                     setSettings((prev: any) => ({ ...prev, footer_logo_url: url }));
@@ -226,6 +229,15 @@ export default function SettingsPage() {
                   onSave={saveSetting}
                   isSaving={saving}
                 />
+
+                  <InputField 
+                  label="Hero tagline Title" 
+                  id="hero_tagline_title"
+                  value={settings.hero_tagline_title} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
                 <div className="md:col-span-2">
                   <InputField 
                     label="Footer About Text" 
@@ -256,6 +268,170 @@ export default function SettingsPage() {
                     isSaving={saving}
                   />
                 </div>
+              </div>
+            </div>
+
+
+            {/* Homepage Other Headings */}
+             
+
+               <div className="bg-white rounded-lg border border-slate-200 p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-slate-600 rounded-lg flex items-center justify-center">
+                  <span className="text-lg font-bold text-purple-600">💻</span>
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-slate-900">Courses Section headings</h2>
+                  <p className="text-sm text-slate-500">customize your courses section headings</p>
+                </div>
+              </div>
+           
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <InputField 
+                  label="Courses Title" 
+                  id="courses_title"
+                  value={settings.courses_title} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+                <InputField 
+                  label="Courses Subtitle" 
+                  id="courses_subtitle" 
+                  value={settings.courses_subtitle} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+
+                
+              </div>
+            </div>
+
+
+              <div className="bg-white rounded-lg border border-slate-200 p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                  <span className="text-lg font-bold text-red-600">👥</span>
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-slate-900">Why Choose Us Section headings</h2>
+                  <p className="text-sm text-slate-500">customize your why choose us section headings</p>
+                </div>
+              </div>
+           
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <InputField 
+                  label="Why Choose Us Title-1. This appears before the gradient title" 
+                  id="why_choose_us_title1"
+                  value={settings.why_choose_us_title1} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+                    <InputField 
+                  label="Why Choose Us Title-2. This is the gradient text" 
+                  id="why_choose_us_title2"
+                  value={settings.why_choose_us_title2} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+               
+ <InputField 
+                  label="Why Choose Us tagline Title" 
+                  id="why_choose_us_tagline_title" 
+                  value={settings.why_choose_us_tagline_title} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+                
+              </div>
+            </div>
+
+               <div className="bg-white rounded-lg border border-slate-200 p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-blue-300 rounded-lg flex items-center justify-center">
+                  <span className="text-lg font-bold text-purple-600">📗</span>
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-slate-900">Reviews Section headings</h2>
+                  <p className="text-sm text-slate-500">customize your reviews section headings</p>
+                </div>
+              </div>
+           
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <InputField 
+                  label="Reviews Title" 
+                  id="reviews_title"
+                  value={settings.reviews_title} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+                <InputField 
+                  label="Reviews Subtitle" 
+                  id="reviews_subtitle" 
+                  value={settings.reviews_subtitle} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+
+                
+              </div>
+            </div>
+
+              <div className="bg-white rounded-lg border border-slate-200 p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-green-300 rounded-lg flex items-center justify-center">
+                  <span className="text-lg font-bold text-red-600">📷</span>
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-slate-900">Image slides Section headings</h2>
+                  <p className="text-sm text-slate-500">customize your Image slides section headings</p>
+                </div>
+              </div>
+           
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <InputField 
+                  label="Image Slides Title-1. This appears before the gradient title" 
+                  id="Image_slides_title1"
+                  value={settings.Image_slides_title1} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+                    <InputField 
+                  label="Image Slides Title-2. This is the gradient text" 
+                  id="Image_slides_title2"
+                  value={settings.Image_slides_title2} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+               
+ <InputField 
+                  label="Image Slides tagline Title" 
+                  id="Image_slides_tagline_title" 
+                  value={settings.Image_slides_tagline_title} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
+                <InputField 
+                  label="Images Slides Subtitle" 
+                  id="Image_slides_subtitle" 
+                  value={settings.Image_slides_subtitle} 
+                  onChange={handleLocalChange}
+                  onSave={saveSetting}
+                  isSaving={saving}
+                />
               </div>
             </div>
           </div>
@@ -322,6 +498,48 @@ export default function SettingsPage() {
             ))}
           </div>
         )}
+        {/* YouTube Embeds Tab */}
+         {activeTab === 'youtube' && (
+          <div className="space-y-8 animate-in fade-in duration-300">
+            <div className="bg-white rounded-lg border border-slate-200 p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                  <SquarePlay className="w-5 h-5 text-red-600" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-slate-900">YouTube Embed Settings</h2>
+                  <p className="text-sm text-slate-500">Manage your YouTube embed configurations</p>
+                </div>
+              </div>
+              <InputField 
+                label="Default YouTube Video URL" 
+                id="youtube_default_url"
+                value={settings.youtube_default_url} 
+                onChange={handleLocalChange}
+                onSave={saveSetting}
+                isSaving={saving}
+              />
+
+                 <InputField 
+                label="Youtube section headline" 
+                id="youtube_section_headline"
+                value={settings.youtube_section_headline} 
+                onChange={handleLocalChange}
+                onSave={saveSetting}
+                isSaving={saving}
+              />
+              
+                 <InputField 
+                label="Youtube section subheadline" 
+                id="youtube_section_subheadline"
+                value={settings.youtube_section_subheadline} 
+                onChange={handleLocalChange}
+                onSave={saveSetting}
+                isSaving={saving}
+              />
+            </div>
+          </div>
+         )}
       </div>
 
       {/* Save Feedback Toast */}

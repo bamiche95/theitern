@@ -2,7 +2,7 @@ import { getSiteSettings } from "@/lib/settings";
 import { url } from "inspector";
 import { Mail, MapPin, Facebook, Linkedin, Instagram, MessageCircle, ArrowRight, Phone } from "lucide-react";
 import Image from "next/image";
-
+import ContactForm from "@/app/components/ContactForm";
 const styles = `
   @keyframes fadeInUp {
     from {
@@ -192,56 +192,8 @@ const socialLinks = [
               <div className="relative">
                 <h2 className="text-2xl font-bold text-slate-900 mb-8">Send us a Message</h2>
 
-                <form className="space-y-6">
-                  {/* Name Field */}
-                  <div className="group">
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Name</label>
-                    <input
-                      type="text"
-                      placeholder="Your name"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 group-hover:border-slate-400"
-                    />
-                  </div>
+                <ContactForm />
 
-                  {/* Email Field */}
-                  <div className="group">
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Email</label>
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 group-hover:border-slate-400"
-                    />
-                  </div>
-
-                  {/* Subject Field */}
-                  <div className="group">
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Subject</label>
-                    <input
-                      type="text"
-                      placeholder="How can we help?"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 group-hover:border-slate-400"
-                    />
-                  </div>
-
-                  {/* Message Field */}
-                  <div className="group">
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Message</label>
-                    <textarea
-                      rows={5}
-                      placeholder="Tell us more about your inquiry..."
-                      className="w-full px-4 py-3 border border-slate-300 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none group-hover:border-slate-400"
-                    ></textarea>
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
-                  >
-                    Send Message
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-                </form>
 
                 <p className="text-xs text-slate-500 text-center mt-6">
                   We'll get back to you within 24 hours.

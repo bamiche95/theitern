@@ -1,4 +1,4 @@
-import { Mail, Headset } from 'lucide-react';
+import { Mail, Headset, MapPin } from 'lucide-react';
 import { getSiteSettings } from '@/lib/settings';
 import Image from 'next/image';
 interface Settings {
@@ -78,7 +78,7 @@ export default function Footer({ settings }: FooterProps) {
               </a>
             </div>
             <div className="flex items-center gap-4 text-gray-300 mb-6">
-              <Headset size={18} />
+              <MapPin size={18} />
               <span className="hover:text-blue-300 transition">
                 {settings.company_address}
               </span>

@@ -20,22 +20,29 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// POST: Public submission
+
 export async function POST(req: NextRequest) {
   try {
     const { full_name, position, content } = await req.json();
 
     if (!full_name || !content) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
     }
 
     await db.query<ResultSetHeader>(
-      "INSERT INTO reviews (full_name, position, content) VALUES (?, ?, ?)",
+      `INSERT INTO reviews (full_name, position, content, is_approved)
+       VALUES (?, ?, ?, 1)`,
       [full_name, position ?? null, content]
     );
 
     return NextResponse.json({ success: true });
   } catch (err: any) {
-    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: err.message },
+      { status: 500 }
+    );
   }
 }

@@ -3,6 +3,7 @@ import { Sparkles, ArrowRight } from "lucide-react";
 interface Settings {
   hero_title: string;
   hero_subtitle: string;
+  hero_tagline_title: string;
 }
 
 interface HeroSectionProps {
@@ -39,7 +40,7 @@ export default function HeroSection({ settings }: HeroSectionProps) {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white text-xs font-semibold uppercase tracking-widest">
             <Sparkles className="w-4 h-4" />
-            Unlock Your Potential
+            {settings.hero_tagline_title}
           </div>
 
           {/* Title */}
@@ -58,7 +59,7 @@ export default function HeroSection({ settings }: HeroSectionProps) {
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6">
+          <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center">
             <a
               href="#courses"
               className="
@@ -85,7 +86,7 @@ export default function HeroSection({ settings }: HeroSectionProps) {
                 hover:bg-white transition
               "
             >
-              Learn More
+              Meet the Trainer
             </a>
           </div>
         </div>

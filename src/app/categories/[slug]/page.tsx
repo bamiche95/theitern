@@ -114,18 +114,17 @@ export default async function CategoryPage({
             </div>
 
             {/* Right Image */}
-            {data.category.thumbnail && (
-              <div className="relative group animate-in fade-in slide-in-from-right-8 duration-700 delay-100 mt-8 md:mt-0">
-                <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl md:rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition duration-500"></div>
-                <div className="relative w-full h-auto aspect-square max-w-xs sm:max-w-sm md:max-w-none mx-auto overflow-hidden rounded-xl md:rounded-2xl shadow-2xl border border-white/20 bg-white">
+      {data.category.thumbnail && (
+             
                   <img
                     src={data.category.thumbnail}
                     alt={data.category.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-contain transition-transform duration-500"
                   />
-                </div>
-              </div>
+             
             )}
+
+             
           </div>
         </div>
       </section>

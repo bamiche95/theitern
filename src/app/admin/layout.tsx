@@ -10,7 +10,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen ">
       {/* Sidebar */}
       <aside className="w-64 bg-slate-900 text-white p-6 flex flex-col">
         <h2 className="text-2xl font-bold mb-8 px-4 text-blue-400">Admin Panel</h2>
@@ -28,6 +28,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
        
           
           <NavLink href="/admin/reviews">Reviews</NavLink>
+          
+          <NavLink href="/admin/carousel">Carousel Images</NavLink>
              <NavLink href="/admin/settings">General Settings</NavLink>
         </nav>
       </aside>

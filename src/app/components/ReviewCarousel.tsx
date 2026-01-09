@@ -107,27 +107,27 @@ export default function ReviewCarousel() {
   return (
     <>
       <style>{styles}</style>
-      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 overflow-hidden">
+      <section className="py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-     
+
 
           {/* Carousel Container */}
           <div className="relative">
             {/* Carousel */}
-           <div
-  ref={scrollContainerRef}
-  className="
+            <div
+              ref={scrollContainerRef}
+              className="
     carousel-scroll
     flex gap-4 md:gap-6
     overflow-x-auto
     pb-4
     snap-x snap-mandatory
   "
->
-                {reviews.map((review: any) => (
-    <div
-      key={review.id}
-      className="
+            >
+              {reviews.map((review: any) => (
+                <div
+                  key={review.id}
+                  className="
         review-card
         snap-center
         min-w-[85%]
@@ -142,7 +142,7 @@ export default function ReviewCarousel() {
         transition
         flex flex-col justify-between
       "
-    >
+                >
                   <div>
                     <Quote className="w-8 h-8 text-blue-100 mb-4" />
                     <p className="text-slate-600 italic mb-6 leading-relaxed">"{review.content}"</p>
@@ -174,22 +174,22 @@ export default function ReviewCarousel() {
             {/* Navigation Arrows */}
             {reviews.length > 1 && (
               <>
-               {/* Navigation Arrows (desktop only) */}
-<div className="hidden md:block">
-  <button
-    onClick={handlePrev}
-    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-20 p-2 bg-blue-600 text-white rounded-full"
-  >
-    <ChevronLeft className="w-6 h-6" />
-  </button>
+                {/* Navigation Arrows (desktop only) */}
+                <div className="hidden md:block">
+                  <button
+                    onClick={handlePrev}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-20 p-2 bg-blue-600 text-white rounded-full"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
 
-  <button
-    onClick={handleNext}
-    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-20 p-2 bg-blue-600 text-white rounded-full"
-  >
-    <ChevronRight className="w-6 h-6" />
-  </button>
-</div>
+                  <button
+                    onClick={handleNext}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-20 p-2 bg-blue-600 text-white rounded-full"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                </div>
 
               </>
             )}
@@ -202,13 +202,13 @@ export default function ReviewCarousel() {
                 <button
                   key={index}
                   onClick={() => handleDotClick(index)}
-                   className={`
+                  className={`
     dot
     w-4 h-4
     rounded-full
     ${index === currentIndex ? "active" : ""}
   `}
-  aria-label={`Go to review ${index + 1}`}
+                  aria-label={`Go to review ${index + 1}`}
                 />
               ))}
             </div>

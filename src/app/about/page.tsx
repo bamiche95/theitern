@@ -12,7 +12,7 @@ export default async function AboutPage() {
       <section className="bg-slate-950 text-white py-24 border-b border-white/10">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-black mb-6 tracking-tight leading-tight">
-            Our Story
+            Our Training
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
             {settings.hero_subtitle}
@@ -25,7 +25,7 @@ export default async function AboutPage() {
         <div className="bg-white p-8 md:p-12 shadow-2xl shadow-blue-100 rounded-3xl border border-slate-100 mb-20">
           <h2 className="text-3xl font-bold mb-10 text-slate-900 flex items-center gap-3">
             <span className="w-1.5 h-8 bg-blue-600 rounded-full"></span>
-            About The Itern
+            Meet our Trainer
           </h2>
 
           {/* This wrapper ensures the HTML inside is styled by Poppins and Prose */}

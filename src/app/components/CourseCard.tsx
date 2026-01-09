@@ -66,14 +66,7 @@ const imageUrl = course.thumbnail
           </h3>
         </Link>
 
-        <div
-          className="text-slate-600 text-sm line-clamp-2 mb-4 prose prose-sm max-w-none"
-          dangerouslySetInnerHTML={{
-            __html: course.content
-              ? renderDelta(course.content)
-              : "<p>No description available.</p>",
-          }}
-        />
+
 
 
         <div className="mt-auto flex items-center justify-between">

@@ -6,6 +6,7 @@ import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 // Note: ReactPlayer is a client component, you may need a wrapper if using in Server Components
 import NextLink from "next/link"; // ✅ Rename the Next.js Link to avoid conflict
 import { ExternalLink } from "lucide-react"; // ✅ Only import specific icons needed
+import TutorList from "@/app/components/TutorList";
 
 function renderDelta(deltaOps: any) {
   if (!deltaOps) return "";
@@ -26,7 +27,7 @@ const [courseRows]: any = await db.query(`
 `, [slug]);
 
 const course = courseRows[0];
-
+console.log("Fetched Course:", course);
 if (!course) notFound();
   // 2. Fetch Tutors
   const [tutors]: any = await db.query(`
@@ -79,12 +80,12 @@ if (!course) notFound();
           </div>
 
           <div className="bg-white opacity-95 border border-slate-200 rounded-2xl p-8 shadow-2xl">
-            <div className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Fee per Month</div>
+           
             <div className="text-4xl font-black mb-8 text-blue-600">${course.enrollment_fee}</div>
             
             {/* ✅ FIXED: Using NextLink (renamed) to avoid conflict with Lucide Link icon */}
             <NextLink 
-              href={course.payment_link || "#"} 
+              href={course.category_payment_link || "#"} 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all text-center flex items-center justify-center gap-2 shadow-lg mb-6 active:scale-[0.98]"
@@ -95,7 +96,7 @@ if (!course) notFound();
             <div className="space-y-3 pt-6 border-t border-slate-100">
               <div className="flex items-center gap-3 text-sm font-medium text-slate-600">
                 <Icons.ShieldCheck className="w-5 h-5 text-green-500 flex-shrink-0" /> 
-                Full Lifetime Access
+                Instructor-led
               </div>
             </div>
           </div>
@@ -134,30 +135,7 @@ if (!course) notFound();
           <div className="bg-white p-8 shadow-xl/20 border border-slate-100 rounded-xl">
             <h3 className="text-xl font-bold mb-6 text-slate-900">Your Instructors</h3>
             <div className="space-y-6">
-              {tutors.map((tutor: any) => (
-                <div key={tutor.id} className="pb-6 border-b border-slate-100 last:border-b-0 last:pb-0">
-                  <div className="flex gap-4 mb-4">
-                    <div className="w-16 h-16 rounded-xl bg-slate-200 overflow-hidden flex-shrink-0 border-2 border-white shadow-md">
-                      {tutor.profile_image ? (
-                        <img src={tutor.profile_image} alt={tutor.name} className="w-full h-full object-cover" />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-blue-100 text-blue-600 font-bold text-lg">
-                          {tutor.name.charAt(0)}
-                        </div>
-                      )}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-base text-slate-900">{tutor.name}</h4>
-                      <p className="text-blue-600 text-xs font-bold uppercase tracking-wider">
-                        {tutor.role || tutor.expertise}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-slate-600 text-sm leading-relaxed italic">
-                    "{tutor.bio}"
-                  </p>
-                </div>
-              ))}
+             <TutorList tutors={tutors} />
             </div>
           </div>
         </div>
@@ -172,11 +150,11 @@ if (!course) notFound();
           </h2>
      
           <NextLink 
-            href={course.payment_link || "#"}
+            href={course.category_payment_link || "#"}
             target="_blank"
             className="inline-block px-12 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-slate-100 transition-all shadow-2xl active:scale-[0.98] text-lg"
           >
-            Enroll Now - ${course.enrollment_fee}
+            Enroll Now at ${course.enrollment_fee}
           </NextLink>
         </div>
       </section>
